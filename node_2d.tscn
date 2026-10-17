@@ -1,3 +1,35 @@
 [gd_scene format=3 uid="uid://cvj66rukls6u0"]
 
+[ext_resource type="Script" uid="uid://cq1srayv53plc" path="res://toast.gd" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://cervf1gmu2mko" path="res://node_2d.gd" id="1_epypp"]
+[ext_resource type="Texture2D" uid="uid://5v03s3s146mb" path="res://icon.svg" id="1_wtcfe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lwn1"]
+size = Vector2(125, 122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlonp"]
+size = Vector2(1000, 40)
+
 [node name="Node2D" type="Node2D" unique_id=1307170826]
+script = ExtResource("1_epypp")
+
+[node name="Toast" type="RigidBody2D" parent="." unique_id=1940843385]
+position = Vector2(550, 150)
+script = ExtResource("1_0e48y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Toast" unique_id=237596363]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Toast" unique_id=559185884]
+position = Vector2(-74, -128)
+shape = SubResource("RectangleShape2D_7lwn1")
+
+[node name="Icon" type="Sprite2D" parent="Toast" unique_id=1067348664]
+position = Vector2(-75, -127)
+scale = Vector2(1.0078125, 0.9785156)
+texture = ExtResource("1_wtcfe")
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1734078658]
+position = Vector2(550, 550)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=64355353]
+shape = SubResource("RectangleShape2D_wlonp")

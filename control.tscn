@@ -1,14 +1,5 @@
 [gd_scene format=3 uid="uid://4tubjkxtc86a"]
 
-[ext_resource type="Script" uid="uid://d33tvvs2koetq" path="res://Tost.cs" id="1_qtu10"]
-[ext_resource type="Texture2D" uid="uid://cadl0ragpfbyv" path="res://assets/toasted-bread-with-melting-butter-isolated-on-transparent-background-png.webp" id="2_ee4bf"]
-[ext_resource type="Texture2D" uid="uid://c56ydmn701nns" path="res://assets/toasted-bread-slice-on-white-background-png.webp" id="3_kbped"]
-[ext_resource type="Script" uid="uid://btw6gocbqwne2" path="res://Camera2d.cs" id="4_ee4bf"]
-[ext_resource type="Texture2D" uid="uid://2uovtdvhmgiv" path="res://Masa.webp" id="4_kbped"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5q0dr"]
-size = Vector2(1145, 148)
-
 [node name="Control" type="Control" unique_id=178087204]
 layout_mode = 3
 anchors_preset = 15
@@ -20,39 +11,3 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Main" type="Node2D" parent="." unique_id=1763719446]
-
-[node name="Tost" type="RigidBody2D" parent="Main" unique_id=33568619]
-script = ExtResource("1_qtu10")
-
-[node name="Sprite2D" type="Sprite2D" parent="Main/Tost" unique_id=1141188712]
-position = Vector2(648, 299.00003)
-scale = Vector2(0.26979166, 0.21041666)
-texture = ExtResource("2_ee4bf")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Main/Tost" unique_id=1033629106]
-position = Vector2(613, 135)
-scale = Vector2(0.13671876, 0.103125006)
-texture = ExtResource("3_kbped")
-
-[node name="Label" type="Label" parent="Main/Tost" unique_id=935351490]
-offset_left = 460.0
-offset_top = 69.0
-offset_right = 888.0
-offset_bottom = 139.0
-
-[node name="Zemin" type="StaticBody2D" parent="Main/Tost" unique_id=1391984472]
-modulate = Color(0.35526925, 0.35526934, 0.35526913, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Tost/Zemin" unique_id=1587094212]
-modulate = Color(0.11764706, 0.36862746, 1, 1)
-position = Vector2(568.5, 576)
-shape = SubResource("RectangleShape2D_5q0dr")
-
-[node name="Sprite2D" type="Sprite2D" parent="Main/Tost/Zemin" unique_id=422867431]
-position = Vector2(569.5, 586)
-scale = Vector2(2.4029536, 0.35021096)
-texture = ExtResource("4_kbped")
-
-[node name="Camera2D" type="Camera2D" parent="Main/Tost" unique_id=1182248891]
-position = Vector2(576, 328)
-script = ExtResource("4_ee4bf")

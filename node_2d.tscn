@@ -5,12 +5,33 @@
 [ext_resource type="Texture2D" uid="uid://5v03s3s146mb" path="res://icon.svg" id="1_wtcfe"]
 [ext_resource type="Texture2D" uid="uid://cg5u5mpledmep" path="res://assets/kitchen_bg.png" id="2_0hol4"]
 [ext_resource type="Texture2D" uid="uid://b76223m78bvn6" path="res://assets/toast_butter.png" id="4_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://cmfecfmc5kryr" path="res://assets/wood_button.png" id="6_kdubu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lwn1"]
 size = Vector2(125, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wlonp"]
 size = Vector2(1000, 40)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rj586"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 90.0
+texture = ExtResource("6_kdubu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kdubu"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 90.0
+texture = ExtResource("6_kdubu")
+modulate_color = Color(0.7137255, 0.5411765, 0.39215687, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d21ai"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 90.0
+texture = ExtResource("6_kdubu")
+modulate_color = Color(0.7137255, 0.5411765, 0.39215687, 1)
 
 [node name="Node2D" type="Node2D" unique_id=1307170826]
 script = ExtResource("1_epypp")
@@ -44,3 +65,97 @@ position = Vector2(550, 550)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=64355353]
 shape = SubResource("RectangleShape2D_wlonp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=880824027]
+
+[node name="MainMenu" type="Control" parent="CanvasLayer" unique_id=1404077248]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MainMenu" unique_id=331754764]
+layout_mode = 1
+offset_top = 0.5
+offset_right = 1152.0
+offset_bottom = 100.5
+theme_override_colors/font_color = Color(1, 0.83137256, 0.3372549, 1)
+theme_override_colors/font_outline_color = Color(0.3529412, 0.17254902, 0.078431375, 1)
+theme_override_constants/outline_size = 21
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 72
+text = "TOST FLIP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="CanvasLayer/MainMenu" unique_id=440001716]
+layout_mode = 1
+offset_left = 396.0
+offset_top = 205.0
+offset_right = 756.0
+offset_bottom = 585.0
+theme_override_constants/separation = 18
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/MainMenu/MenuButtons" unique_id=204489896]
+custom_minimum_size = Vector2(360, 110)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8784314, 0.5411765, 1)
+theme_override_colors/font_outline_color = Color(0.2901961, 0.14509805, 0.05882353, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_rj586")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kdubu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rj586")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_d21ai")
+text = "OYNA"
+
+[node name="CollectionButton" type="Button" parent="CanvasLayer/MainMenu/MenuButtons" unique_id=332464890]
+custom_minimum_size = Vector2(360, 110)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8784314, 0.5411765, 1)
+theme_override_colors/font_outline_color = Color(0.2901961, 0.14509805, 0.05882353, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_rj586")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kdubu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rj586")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_d21ai")
+text = "KOLEKSİYON"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/MainMenu/MenuButtons" unique_id=1160621075]
+custom_minimum_size = Vector2(360, 110)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8784314, 0.5411765, 1)
+theme_override_colors/font_outline_color = Color(0.2901961, 0.14509805, 0.05882353, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_rj586")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kdubu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rj586")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_d21ai")
+text = "ÇIKIŞ"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainMenu" unique_id=1516285786]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollectionMenu" type="Control" parent="CanvasLayer" unique_id=1912580706]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackButton" type="Button" parent="CanvasLayer/CollectionMenu" unique_id=400923317]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Geri"
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MenuButtons/CollectionButton" to="." method="_on_collection_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CollectionMenu/BackButton" to="." method="_on_back_button_pressed"]

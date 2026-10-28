@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b3ysgjrmrensq"]
+
+[ext_resource type="Script" uid="uid://bp5k5s267kxuy" path="res://Bug.gd" id="1_oxowt"]
+[ext_resource type="Texture2D" uid="uid://nyl0jq67s0j3" path="res://assets/cockroach.png" id="2_vtyse"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5q0dr"]
+size = Vector2(35.75, 18.25)
+
+[node name="Area2D" type="Area2D" unique_id=1707504991]
+script = ExtResource("1_oxowt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=356420663]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_vtyse")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=444712544]
+position = Vector2(-0.5, 0.5)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_5q0dr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

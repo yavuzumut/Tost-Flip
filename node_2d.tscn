@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://cmfecfmc5kryr" path="res://assets/wood_button.png" id="6_kdubu"]
 [ext_resource type="Texture2D" uid="uid://ds84w6k6cgw0x" path="res://assets/high_score_note.png" id="7_d21ai"]
 [ext_resource type="Texture2D" uid="uid://c4phve770ousw" path="res://assets/Toasty_Tost_Flip_Logo-removebg-preview.png" id="9_4d7sh"]
+[ext_resource type="AudioStream" uid="uid://cgna0gwqef1tw" path="res://assets/audio/06_dugme_tik.wav" id="10_ir8iy"]
+[ext_resource type="AudioStream" uid="uid://cri42uaufm2lm" path="res://assets/audio/01_firlatma_whoosh.wav" id="11_hqns4"]
+[ext_resource type="AudioStream" uid="uid://d2hh57aeo8v4w" path="res://assets/audio/02_havada_donus_swish.wav" id="12_x0ka3"]
+[ext_resource type="AudioStream" uid="uid://ciets8ooyhgc8" path="res://assets/audio/03_tabaga_inis_plop.wav" id="13_0h7mo"]
+[ext_resource type="AudioStream" uid="uid://bqkkpktyt10bp" path="res://assets/audio/04_puan_ding.wav" id="14_nr8wp"]
+[ext_resource type="AudioStream" uid="uid://cs5mjp3nsddr0" path="res://assets/audio/05_basarisizlik_pof.wav" id="15_d2bti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lwn1"]
 size = Vector2(125, 122)
@@ -210,6 +216,24 @@ layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Geri"
+
+[node name="SesEfekti" type="AudioStreamPlayer" parent="." unique_id=784654244]
+stream = ExtResource("10_ir8iy")
+
+[node name="SesFirlatma" type="AudioStreamPlayer" parent="." unique_id=619901707]
+stream = ExtResource("11_hqns4")
+
+[node name="SesDonus" type="AudioStreamPlayer" parent="." unique_id=457487840]
+stream = ExtResource("12_x0ka3")
+
+[node name="SesInis" type="AudioStreamPlayer" parent="." unique_id=360547763]
+stream = ExtResource("13_0h7mo")
+
+[node name="SesPuan" type="AudioStreamPlayer" parent="." unique_id=1878411538]
+stream = ExtResource("14_nr8wp")
+
+[node name="SesBasarisizlik" type="AudioStreamPlayer" parent="." unique_id=1652370338]
+stream = ExtResource("15_d2bti")
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MenuButtons/CollectionButton" to="." method="_on_collection_button_pressed"]

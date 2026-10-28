@@ -50,14 +50,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	match state:
 		GameState.READY:
 			if btn == MOUSE_BUTTON_LEFT:
+				$SesFirlatma.play()
 				toast.launch()
 				state = GameState.FLYING
 		GameState.FLYING:
 			if not toast.airborne:
 				return  # yere değdi, kontrol kilitli
 			if btn == MOUSE_BUTTON_LEFT:
+				$SesDonus.play()
 				toast.spin(-1)
 			elif btn == MOUSE_BUTTON_RIGHT:
+				$SesDonus.play()
 				toast.spin(1)
 
 
@@ -65,18 +68,24 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_toast_landed(butter_down: bool) -> void:
 	if state != GameState.FLYING:
 		return
+	$SesInis.play()	
 
 	state = GameState.LANDED
 
 	if butter_down:
 		# Oyuncu kaybetti
 		score = 0
+		await $SesInis.finished
+		$SesBasarisizlik.play()
 		_result_label.text = "KAYBETTİN! Tereyağı yere yapıştı."
+		
 		_result_label.modulate = Color("ff6b6b")
 
 	else:
 		# Oyuncu kazandı
 		score += 1
+		await $SesInis.finished
+		$SesPuan.play()
 		_result_label.text = "KAZANDIN! +1 puan"
 		_result_label.modulate = Color("7dff8a")
 	if randi() % 3 == 0:
@@ -231,6 +240,7 @@ func get_level(points: int) -> int:
 
 # OYNA BUTONU
 func _on_play_button_pressed() -> void:
+	$SesEfekti.play()
 	menu_bg.hide()
 	$CanvasLayer/MainMenu.hide()
 	$CanvasLayer/CollectionMenu.hide()
@@ -244,6 +254,7 @@ func _on_play_button_pressed() -> void:
 
 # KOLEKSIYON BUTONU
 func _on_collection_button_pressed() -> void:
+	$SesEfekti.play()
 	menu_bg.show()
 	$CanvasLayer/MainMenu.hide()
 	$CanvasLayer/CollectionMenu.show()
@@ -257,6 +268,7 @@ func _on_exit_button_pressed() -> void:
 
 # GERI BUTONU
 func _on_back_button_pressed() -> void:
+	$SesEfekti.play()
 	_show_main_menu()
 
 

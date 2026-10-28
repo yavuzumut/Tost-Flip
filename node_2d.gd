@@ -1,5 +1,7 @@
 extends Node2D
 
+var bug_scene = preload("res://Bug.tscn")
+
 const RECORD_PATH := "user://tost_flip_record.save"
 
 enum GameState { MAIN_MENU, COLLECTION, READY, FLYING, LANDED, GAME_OVER }
@@ -77,6 +79,8 @@ func _on_toast_landed(butter_down: bool) -> void:
 		score += 1
 		_result_label.text = "KAZANDIN! +1 puan"
 		_result_label.modulate = Color("7dff8a")
+	if randi() % 3 == 0:
+		spawn_bug()
 
 		# Yeni rekor kontrolü
 		if score > best_score:
@@ -319,3 +323,38 @@ func _play_menu_intro() -> void:
 	tween.tween_property(
 		record, "modulate:a", 1.0, 0.5
 	).set_delay(0.30)
+func spawn_bug():
+	var bug = bug_scene.instantiate()
+
+	add_child(bug)
+
+	bug.global_position = Vector2(
+	-50,
+	toast.global_position.y
+)
+
+	bug.hit_toast.connect(_on_bug_hit)
+	bug.bug_killed.connect(_on_bug_killed)
+
+	print("BUG OLUSTU")
+
+
+
+func _on_bug_hit():
+
+	score -= 1
+
+	if score < 0:
+		score = 0
+
+	_score_label.text = "Puan: %d" % score
+
+	print("Bocek tosta degdi! -1 puan")
+
+func _on_bug_killed():
+
+	score += 2
+
+	_score_label.text = "Puan: %d" % score
+
+	print("Bocek olduruldu! +2 puan")

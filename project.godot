@@ -11,17 +11,14 @@ config_version=5
 [application]
 
 config/name="Tost-Flip"
-run/main_scene="uid://4tubjkxtc86a"
-config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
+run/main_scene="uid://cvj66rukls6u0"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-
-[dotnet]
-
-project/assembly_name="Tost-Flip"
 
 [physics]
 

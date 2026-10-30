@@ -12,10 +12,12 @@ enum GameState { MAIN_MENU, COLLECTION, READY, FLYING, LANDED, GAME_OVER }
 
 var state := GameState.MAIN_MENU
 var score := 0
+var combo := 0
 var best_score := 0
 var _start_pos := Vector2.ZERO
 
 var _score_label: Label
+var _combo_label: Label
 var _result_label: Label
 var _retry_button: Button
 var _game_ui: CanvasLayer
@@ -71,13 +73,22 @@ func _on_toast_landed(butter_down: bool) -> void:
 	if butter_down:
 		# Oyuncu kaybetti
 		score = 0
-		_result_label.text = "KAYBETTİN! Tereyağı yere yapıştı."
+		combo=0
+		_result_label.text = "KAYBETTİN! Combo sıfırlandı."
 		_result_label.modulate = Color("ff6b6b")
 
 	else:
 		# Oyuncu kazandı
-		score += 1
-		_result_label.text = "KAZANDIN! +1 puan"
+		combo += 1
+
+		var earned = mini(combo, 5)
+
+		score += earned
+
+		if combo > 1:
+			_result_label.text = "COMBO x%d! +%d puan" % [combo, earned]
+		else:
+			_result_label.text = "KAZANDIN! +1 puan"
 		_result_label.modulate = Color("7dff8a")
 	if randi() % 3 == 0:
 		spawn_bug()
@@ -91,6 +102,7 @@ func _on_toast_landed(butter_down: bool) -> void:
 				_best_score_label.text = str(best_score)
 
 	_score_label.text = "Puan: %d" % score
+	_combo_label.text = "Combo: x%d" % combo
 	_result_label.visible = true
 
 	state = GameState.GAME_OVER
@@ -131,6 +143,7 @@ func _restart() -> void:
 	state = GameState.READY
 	_result_label.visible = false
 	_score_label.text = "Puan: %d" % score
+	_combo_label.text = "Combo: x%d" % combo
 	print("Seviye: ", get_level(score), " | Puan: ", score)
 
 
@@ -149,6 +162,9 @@ func _build_ui() -> void:
 
 	_score_label = _make_label("Puan: 0", 30, Color("fff4d6"))
 	box.add_child(_score_label)
+	
+	_combo_label = _make_label("Combo: x0", 24, Color("ffd24a"))
+	box.add_child(_combo_label)
 
 	box.add_child(_make_label(
 		"Sol tık: fırlat / sola döndür   |   Sağ tık: sağa döndür\nTereyağlı yüz yere gelmesin!",

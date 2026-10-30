@@ -14,7 +14,7 @@
 size = Vector2(125, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wlonp"]
-size = Vector2(1000, 40)
+size = Vector2(1000, 34)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rj586"]
 content_margin_left = 20.0
@@ -74,6 +74,7 @@ position = Vector2(550, 550)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=64355353]
 visible = false
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_wlonp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=880824027]
